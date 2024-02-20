@@ -1,21 +1,15 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: mynginx-taint-noschedule-test-toleration
+  name: mynginx-testing
   labels:            
     devops: '18'
     company: talent
-    type: apply
+    type: create
 spec: 
   containers:         
   - name: nginx18
     image: nginx:1.20.1
     ports:
     - containerPort: 80
-  nodeSelector:
-    tier: web
-  tolerations:
-  - key: "name"
-    operator: "Equal"
-    value: "devops"
-    effect: "NoSchedule"
+  nodeName: k8-18-worker-1

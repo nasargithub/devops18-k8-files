@@ -1,13 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-test-no-replicas
+  name: deploy-test-nodeselector
   labels:
     purpose: learning
   namespace: preprod
 spec:
-  strategy:
-    type: Recreate
+  replicas: 4
   selector:
     matchLabels:
       type: create
@@ -21,6 +20,8 @@ spec:
     spec:
       containers:
       - name: httpd
-        image: httpd:latest
+        image: nginx
         ports:
         - containerPort: 80
+      nodeSelector:
+        tier: web

@@ -6,7 +6,7 @@ metadata:
     purpose: learning
   namespace: preprod
 spec:
-  replicas: 5
+  replicas: 4
   selector:
     matchLabels:
       type: create
@@ -20,6 +20,6 @@ spec:
     spec:
       containers:
       - name: httpd
-        image: httpd:2.4
+        image: nginx
         ports:
         - containerPort: 80

@@ -1,13 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-test-no-replicas
+  name: deploy-test-nodeaffinity-anti
   labels:
     purpose: learning
   namespace: preprod
 spec:
-  strategy:
-    type: Recreate
+  replicas: 4
   selector:
     matchLabels:
       type: create
@@ -21,6 +20,15 @@ spec:
     spec:
       containers:
       - name: httpd
-        image: httpd:latest
+        image: nginx
         ports:
         - containerPort: 80
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: batch
+                operator: NotIn
+                values:
+                - '18'

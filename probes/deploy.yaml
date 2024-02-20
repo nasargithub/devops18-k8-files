@@ -1,13 +1,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: deploy-test-no-replicas
+  name: deploy-1
   labels:
     purpose: learning
-  namespace: preprod
+  namespace: dev
 spec:
-  strategy:
-    type: Recreate
+  replicas: 1
   selector:
     matchLabels:
       type: create
@@ -21,6 +20,15 @@ spec:
     spec:
       containers:
       - name: httpd
-        image: httpd:latest
+        image: nginx
         ports:
         - containerPort: 80
+        resources:
+          requests:
+            memory: 5Mi
+          limits:
+            memory: 8Mi
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 80
