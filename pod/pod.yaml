@@ -1,4 +1,4 @@
-## trying to replicat conflicts
+#adding some new text
 apiVersion: v1
 kind: Pod
 metadata:
