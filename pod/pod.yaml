@@ -1,4 +1,4 @@
-## trying to replicat conflicts
+## trying to replicat conflicts on main branch
 apiVersion: v1
 kind: Pod
 metadata:
