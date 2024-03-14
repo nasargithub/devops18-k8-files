@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 ## trying to replicat conflicts on main branch
+=======
+#adding some new text
+>>>>>>> hot-fix
 apiVersion: v1
 kind: Pod
 metadata:
@@ -14,3 +18,5 @@ spec:
     ports:
     - containerPort: 80
   nodeName: k8-18-worker-1
+
+    #############
